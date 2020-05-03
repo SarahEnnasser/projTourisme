@@ -15,7 +15,7 @@ public class Admin implements Serializable{
 	private String matricule;
 	private Collection<Programme> programme;
 	
-	@OneToMany(mappedBy ="Admin")// fetch = FetchType.LAZY  par defaut , cvd quand je demande a hibernate de charger un admin, il va charger que ses infos 
+	@OneToMany(mappedBy ="Admin")// fetch = FetchType.LAZY  par  defaut , cvd quand je demande a hibernate de charger un admin, il va charger que ses infos 
 
 	public String getMatricule() {
 		return matricule;
