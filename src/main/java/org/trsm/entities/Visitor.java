@@ -9,7 +9,7 @@ import javax.persistence.OneToMany;
 public class Visitor implements Serializable{
 	private Collection<Programme> programme;
 	
-	@OneToMany(mappedBy ="Visitor")
+	//@OneToMany(mappedBy ="Visitor")
 
 	public Visitor(Collection<Programme> programme) {
 		super();
