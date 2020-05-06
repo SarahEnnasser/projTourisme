@@ -13,10 +13,10 @@ public class Admin implements Serializable{
 	@Id @GeneratedValue
 	private int id_Admin;
 	private String matricule;
-	private Collection<Programme> programme;
+	
 	
 	@OneToMany(mappedBy ="Admin")// fetch = FetchType.LAZY  par  defaut , cvd quand je demande a hibernate de charger un admin, il va charger que ses infos 
-
+	private Collection<Programme> programme;
 	public String getMatricule() {
 		return matricule;
 	}
