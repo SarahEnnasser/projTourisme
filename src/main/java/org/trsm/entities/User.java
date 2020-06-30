@@ -1,87 +1,106 @@
 package org.trsm.entities;
 
-import java.io.Serializable;
+import java.util.Objects;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)  //annotation JPA
-@DiscriminatorColumn(name = "role",discriminatorType = DiscriminatorType.STRING) //annotation JPA
-public class User implements Serializable{
+public class User {
 	@Id @GeneratedValue
-	private int id;
-	private String name;
-	private String email;
-	private String password;
-	private String phone_number;
-	private String username;
+	private Long id;
+	private String firstName;
+	private String lastName;
+	private String role;
 	
 	public User() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public User(int id, String name, String email, String password, String phone_number, String username) {
+	public User(Long id, String firstName, String lastName, String role) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.phone_number = phone_number;
-		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.role = role;
 	}
 
-	public int getId() {
+
+
+
+	public User(String firstName, String lastName, String role) {
+		
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.role = role;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public String getName() {
-		return name;
+	
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public String getPassword() {
-		return password;
+
+	public String getRole() {
+		return role;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
-	public String getPhone_number() {
-		return phone_number;
+	@Override
+	public int hashCode() {
+		return Objects.hash(firstName, id, lastName, role);
 	}
 
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof User))
+			return false;
+		User other = (User) obj;
+		return Objects.equals(firstName, other.firstName) && Objects.equals(id, other.id)
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(role, other.role);
 	}
 
-	public String getUsername() {
-		return username;
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", role=" + role + "]";
 	}
+	
+	
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	
+
+
+	
+	
+
+
+
+	
+	
 
 }
